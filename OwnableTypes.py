@@ -547,7 +547,7 @@ class Railroad:
             elif x == "auction":
                 game_board.auction(self)
         else:
-            num_rails_owned = game_board.get_other_player().rails_owned.size
+            num_rails_owned = len(game_board.get_other_player().rails_owned)
 
             if num_rails_owned == 1:
                 rent = 25
@@ -557,6 +557,8 @@ class Railroad:
                 rent = 100
             else:
                 rent = 200
+            print("You must pay $", rent)
+            game_board.get_current_player().withdraw(rent)
 
 
 class Utility:
@@ -578,15 +580,15 @@ class Utility:
             if x == "purchase":
                 if game_board.get_current_player().cash >= self.purchase_value:
                     self.owner = game_board.determine_turn()  # sets property owner
-                    game_board.get_current_player().utilities.append(self)
+                    game_board.get_current_player().utilities_owned.append(self)
                     print("you bought this utlilty")
                 else:
                     print("you dont have enough cash")  # need to implement mortgaging functionality
             elif x == "auction":
                 game_board.auction(self)
         else:
-            num_utilities_owned = game_board.get_other_player().utilities_owned.size()
-            roll_val = game_board.get_current_player.roll
+            num_utilities_owned = len(game_board.get_other_player().utilities_owned)
+            roll_val = game_board.get_current_player().roll
             if num_utilities_owned == 2:
                 rent = roll_val * 10
             else:

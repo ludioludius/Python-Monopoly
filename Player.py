@@ -8,6 +8,13 @@ class Player:
         self.cash = 1500
         self.is_bankrupt = False
         self.roll = 0
+        self.is_in_jail = False
+        self.jail_turn_counter = 0
+        self.num_of_community_GOOJF_cards = 0
+        self.num_of_chance_GOOJF_cards = 0
+
+        self.roll_memory = []
+        self.position_memory = []
 
         self.rails_owned = []
         self.utilities_owned = []
@@ -27,6 +34,35 @@ class Player:
         self.cash = self.cash - amount
         if self.cash < 0:
             self.is_bankrupt = True
+
+    def deposit(self, amount):
+        self.cash += amount
+
+    # DOESNT WORK WHEN MOVING BACKWARDS
+    def check_pass_go(self):
+        if len(self.position_memory) >= 2:
+            if self.position_memory[-1] < self.position_memory[-2]:
+                self.cash += 200
+                print(self.name, "receives $200 for passing Go")
+
+    def jail(self):
+        self.move(10)
+        self.jail_turn_counter = 0
+        self.is_in_jail = True
+
+    def unjail(self):
+        self.jail_turn_counter = 0
+        self.is_in_jail = False
+
+    def move(self, slot_number_moved_to):
+        self.position = slot_number_moved_to
+        self.position_memory.append(slot_number_moved_to)
+
+
+
+
+
+
 
 
 

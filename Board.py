@@ -4,14 +4,19 @@ from OwnableTypes import *
 
 
 class Board:
+    # attributes:
+    # - slots
+    # - player1
+    # - player2
+
     slot0 = Go("Go", 0)
     slot1 = BrownProperty("Mediterranean Avenue", 60, 30, 2, 10, 30, 90, 160, 250, 1)
-    slot2 = Nothing("Community Chest", 2)
+    slot2 = CommunityChest("Community Chest", 2)
     slot3 = BrownProperty("Baltic Avenue", 60, 30, 4, 20, 60, 180, 320, 450, 3)
     slot4 = Tax("Income Tax", 200, 4)
     slot5 = Railroad("Reading Railroad", 5)
     slot6 = LightBlueProperty("Oriental Avenue", 100, 50, 6, 30, 90, 270, 400, 550, 6)
-    slot7 = Nothing("Chance Card", 7)
+    slot7 = Chance("Chance Card", 7)
     slot8 = LightBlueProperty("Vermont Avenue", 100, 50, 6, 30, 90, 270, 400, 550, 8)
     slot9 = LightBlueProperty("Connecticut Avenue", 120, 60, 8, 40, 100, 300, 450, 600, 9)
     slot10 = Nothing("Jail", 10)
@@ -21,12 +26,12 @@ class Board:
     slot14 = PinkProperty("Virgina Avenue", 160, 80, 12, 60, 180, 500, 700, 900, 14)
     slot15 = Railroad("Pennsylvania Railroad", 15)
     slot16 = OrangeProperty("ST. James Place", 180, 90, 14, 70, 200, 550, 750, 950, 16)
-    slot17 = Nothing("Community Chest", 17)
+    slot17 = CommunityChest("Community Chest", 17)
     slot18 = OrangeProperty("Tennessee Avenue", 180, 90, 14, 70, 200, 550, 750, 950, 18)
     slot19 = OrangeProperty("New York Avenue", 200, 100, 16, 80, 220, 600, 800, 1000, 19)
     slot20 = Nothing("Free Parking", 20)
     slot21 = RedProperty("Kentucky Avenue", 220, 110, 18, 90, 250, 700, 875, 1050, 21)
-    slot22 = Nothing("Chance", 22)
+    slot22 = Chance("Chance", 22)
     slot23 = RedProperty("Indiana Avenue", 220, 110, 18, 90, 250, 700, 875, 1050, 23)
     slot24 = RedProperty("Illinois Avenue", 240, 120, 20, 100, 300, 750, 925, 1100, 24)
     slot25 = Railroad("B&O Railroad", 25)
@@ -34,14 +39,14 @@ class Board:
     slot27 = YellowProperty("Ventnor Avenue", 260, 130, 22, 110, 330, 800, 975, 1150, 27)
     slot28 = Utility("Water Works", 28)
     slot29 = YellowProperty("Marvin Gardens", 280, 140, 24, 120, 360, 850, 1025, 1200, 29)
-    slot30 = Nothing("Go To Jail", 30)
+    slot30 = GoToJail("Go To Jail", 30)
     slot31 = GreenProperty("Pacific Avenue", 300, 150, 26, 130, 390, 900, 1100, 1275, 31)
     slot32 = GreenProperty("North Carolina Avenue", 300, 150, 26, 130, 390, 900, 1100, 1275, 32)
-    slot33 = Nothing("Community Chest", 32)
-    slot34 = GreenProperty("Pennsylvania Avenue", 320, 160, 28, 150, 450, 1000, 1200, 1400, 33)
-    slot35 = Railroad("Short Line", 200)
-    slot36 = Nothing("Chance", 35)
-    slot37 = BlueProperty("Park Place", 350, 175, 35, 175, 500, 1100, 1300, 1500, 36)
+    slot33 = CommunityChest("Community Chest", 33)
+    slot34 = GreenProperty("Pennsylvania Avenue", 320, 160, 28, 150, 450, 1000, 1200, 1400, 34)
+    slot35 = Railroad("Short Line", 35)
+    slot36 = Chance("Chance", 36)
+    slot37 = BlueProperty("Park Place", 350, 175, 35, 175, 500, 1100, 1300, 1500, 37)
     slot38 = Tax("Luxury Tax", 100, 38)
     slot39 = BlueProperty("Boardwalk", 400, 200, 50, 200, 600, 1400, 1700, 2000, 39)
 
@@ -54,8 +59,6 @@ class Board:
         self.player1 = Player(1, name1)
         name2 = input("Enter player 2 name: ")
         self.player2 = Player(2, name2)
-
-        # create list of slots and assign it to slots attribute
 
     def determine_turn(self):
 
@@ -77,6 +80,7 @@ class Board:
             return self.player1
 
     # TODO: Slot ownership and slot state and player cash value summary function
+    #TODO: start auctionianing at zero
 
     # includes bankrupcy setting, need to include mortgaging capability
     def auction(self, auction_property):
